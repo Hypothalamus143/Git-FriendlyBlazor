@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
-using MyBlazorApp.Data;
+using GitFriendly.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 

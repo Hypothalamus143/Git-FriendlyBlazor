@@ -1,4 +1,4 @@
-namespace MyBlazorApp.Data;
+namespace GitFriendly.Data;
 
 public class WeatherForecast
 {

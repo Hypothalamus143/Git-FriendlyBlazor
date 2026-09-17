@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace MyBlazorApp.Models;
+namespace GitFriendly.Models;
 
 public class UserRegisterModel
 {

@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\L23Y16W03\\Downloads\\Sprint\\MyBlazorApp\\MyBlazorApp.csproj",
-      "projectName": "MyBlazorApp",
-      "projectPath": "C:\\Users\\L23Y16W03\\Downloads\\Sprint\\MyBlazorApp\\MyBlazorApp.csproj",
+      "projectUniqueName": "C:\\Users\\L23Y16W03\\Downloads\\Sprint\\Git-FriendlyBlazor\\GitFriendly.csproj",
+      "projectName": "GitFriendly",
+      "projectPath": "C:\\Users\\L23Y16W03\\Downloads\\Sprint\\Git-FriendlyBlazor\\GitFriendly.csproj",
       "packagesPath": "C:\\Users\\L23Y16W03\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\L23Y16W03\\Downloads\\Sprint\\MyBlazorApp\\obj\\",
+      "outputPath": "C:\\Users\\L23Y16W03\\Downloads\\Sprint\\Git-FriendlyBlazor\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
