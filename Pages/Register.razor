@@ -1,0 +1,42 @@
+@page "/register"
+@using MyBlazorApp.Models
+@using MyBlazorApp.Shared
+@inject NavigationManager Nav
+<head>
+    <link rel="stylesheet" href="css/app.css" />
+</head>
+<div class="d-flex justify-content-center align-items-center vh-100 p-3">
+    <div class="auth-container">
+        <div class="top-left-logo">
+            <BrandLogo />
+        </div>
+
+        <h2 class="form-title">Register</h2>
+
+        <EditForm Model="@registerModel" OnValidSubmit="HandleRegistration" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+            <DataAnnotationsValidator />
+
+            <InputText class="custom-input" placeholder="Username" @bind-Value="registerModel.Username" />
+            <ValidationMessage For="@(() => registerModel.Username)" class="text-danger mb-2" />
+
+            <InputText class="custom-input" type="password" placeholder="Password" @bind-Value="registerModel.Password" />
+            <ValidationMessage For="@(() => registerModel.Password)" class="text-danger mb-2" />
+
+            <InputText class="custom-input" type="password" placeholder="Confirm Password" @bind-Value="registerModel.ConfirmPassword" />
+            <ValidationMessage For="@(() => registerModel.ConfirmPassword)" class="text-danger mb-2" />
+
+            <button type="submit" class="btn-submit">Create Account</button>
+        </EditForm>
+
+        <a class="auth-footer-link" @onclick='() => Nav.NavigateTo("/login")'>Login</a>
+    </div>
+</div>
+
+@code {
+    private UserRegisterModel registerModel = new();
+
+    private void HandleRegistration()
+    {
+        Nav.NavigateTo("/dashboard");
+    }
+}

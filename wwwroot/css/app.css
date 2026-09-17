@@ -1,0 +1,224 @@
+:root {
+    --bg-page: #000000;              /* Pitch black root background */
+    --bg-container: #1b1b1e;         /* Dark charcoal card container */
+    --bg-input: #121214;             /* Dark input background */
+    --border-dark: #2a2a2d;          /* Soft border color */
+    --border-input: #2a2a2d;         
+    --text-main: #ffffff;
+    --text-muted: #8e8e93;
+    --btn-bg: #ffffff;
+    --btn-text: #000000;
+}
+
+/* Base resets */
+html, body {
+    background-color: var(--bg-page) !important;
+    color: var(--text-main);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+/* Screen wrapper to center the card frame */
+.app-viewport {
+    background-color: var(--bg-page);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+/* Outer Card Container matching reference layout */
+.auth-container, .dashboard-container {
+    background-color: var(--bg-container);
+    border: 1px solid var(--border-dark);
+    border-radius: 20px;
+    width: 100%;
+    max-width: 900px;
+    min-height: 520px;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+    box-sizing: border-box;
+}
+
+.auth-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 2rem;
+}
+
+/* Form Headings */
+.form-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 1.75rem;
+    text-align: center;
+}
+
+/* Pill Input Fields */
+.custom-input {
+    width: 100%;
+    max-width: 380px;
+    background-color: var(--bg-input);
+    border: 1.5px solid var(--border-input);
+    color: var(--text-main);
+    border-radius: 50px;
+    padding: 0.75rem 1.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-size: 0.95rem;
+    font-weight: 600;
+    outline: none;
+    transition: all 0.2s ease-in-out;
+}
+
+.custom-input:focus {
+    border-color: #55555c;
+    background-color: #161619;
+}
+
+.custom-input::placeholder {
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+/* White Solid Submit Button */
+.btn-submit {
+    width: 100%;
+    max-width: 220px;
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
+    font-weight: 700;
+    border: none;
+    border-radius: 50px;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    font-size: 0.95rem;
+    transition: opacity 0.2s ease;
+}
+
+.btn-submit:hover {
+    opacity: 0.9;
+}
+
+.auth-footer-link {
+    margin-top: 1.75rem;
+    color: var(--text-main);
+    text-decoration: underline;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.auth-footer-link:hover {
+    color: var(--text-muted);
+}
+
+/* Top Left Logo Position for Register/Login Cards */
+.top-left-logo {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+}
+
+/* Top Search Bar & Header for Dashboard */
+.dashboard-container {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboard-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+}
+
+.search-input {
+    flex-grow: 1;
+    background-color: var(--bg-input);
+    border: 1.5px solid var(--border-input);
+    border-radius: 50px;
+    padding: 0.65rem 1.25rem;
+    color: var(--text-main);
+    font-size: 0.95rem;
+    font-weight: 600;
+    outline: none;
+}
+
+.search-input::placeholder {
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.nav-icon-btn {
+    background-color: #000000;
+    border: 1px solid var(--border-dark);
+    border-radius: 12px;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-main);
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+}
+
+.nav-icon-btn:hover {
+    border-color: #555;
+}
+
+/* Recently Opened Cards Layout */
+.dashboard-content {
+    margin-top: 1.5rem;
+    padding: 0 0.5rem;
+}
+
+.section-label {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    color: var(--text-main);
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.25rem;
+}
+
+.repo-card {
+    background-color: #0d0d0f;
+    border: 1px solid var(--border-dark);
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.repo-card-preview {
+    background-color: #121214;
+    height: 110px;
+    border-bottom: 1px solid var(--border-dark);
+    padding: 0.75rem;
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    overflow: hidden;
+}
+
+.repo-card-title {
+    background-color: #ffffff;
+    color: #000000;
+    font-weight: 700;
+    text-align: center;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+}
