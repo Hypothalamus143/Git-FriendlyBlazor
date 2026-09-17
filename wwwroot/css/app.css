@@ -222,3 +222,10 @@ html, body {
     padding: 0.5rem 0.75rem;
     font-size: 0.9rem;
 }
+.brand-logo-img {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+    border-radius: 8px; /* Optional: adds rounded corners if needed */
+    display: block;
+}
