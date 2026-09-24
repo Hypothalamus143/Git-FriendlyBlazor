@@ -30,3 +30,5 @@ C:\Users\L23Y16W03\Downloads\Sprint\Git-FriendlyBlazor\obj\Debug\net7.0\refint\G
 C:\Users\L23Y16W03\Downloads\Sprint\Git-FriendlyBlazor\obj\Debug\net7.0\GitFriendly.pdb
 C:\Users\L23Y16W03\Downloads\Sprint\Git-FriendlyBlazor\obj\Debug\net7.0\GitFriendly.genruntimeconfig.cache
 C:\Users\L23Y16W03\Downloads\Sprint\Git-FriendlyBlazor\obj\Debug\net7.0\ref\GitFriendly.dll
+C:\Users\L23Y16W03\Downloads\Sprint\Git-FriendlyBlazor\bin\Debug\net7.0\package-lock.json
+C:\Users\L23Y16W03\Downloads\Sprint\Git-FriendlyBlazor\bin\Debug\net7.0\package.json
