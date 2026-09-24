@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "DBwuexzt82CC5K2rZTlQxiWPmilzGLNqBYatL5h5bMA=",
+  "Hash": "1NmuAVpFMztkGDPYoR7iyO7PN+8DtwrEdMWYqknEYAE=",
   "Source": "GitFriendly",
   "BasePath": "_content/GitFriendly",
   "Mode": "Default",
@@ -16,44 +16,6 @@
     }
   ],
   "Assets": [
-    {
-      "Identity": "C:\\Users\\L23Y16W03\\Downloads\\Sprint\\Git-FriendlyBlazor\\obj\\Debug\\net7.0\\scopedcss\\bundle\\GitFriendly.styles.css",
-      "SourceId": "GitFriendly",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\L23Y16W03\\Downloads\\Sprint\\Git-FriendlyBlazor\\obj\\Debug\\net7.0\\scopedcss\\bundle\\",
-      "BasePath": "_content/GitFriendly",
-      "RelativePath": "GitFriendly.styles.css",
-      "AssetKind": "All",
-      "AssetMode": "CurrentProject",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "ScopedCss",
-      "AssetTraitValue": "ApplicationBundle",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\L23Y16W03\\Downloads\\Sprint\\Git-FriendlyBlazor\\obj\\Debug\\net7.0\\scopedcss\\bundle\\GitFriendly.styles.css"
-    },
-    {
-      "Identity": "C:\\Users\\L23Y16W03\\Downloads\\Sprint\\Git-FriendlyBlazor\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\GitFriendly.bundle.scp.css",
-      "SourceId": "GitFriendly",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\L23Y16W03\\Downloads\\Sprint\\Git-FriendlyBlazor\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\",
-      "BasePath": "_content/GitFriendly",
-      "RelativePath": "GitFriendly.bundle.scp.css",
-      "AssetKind": "All",
-      "AssetMode": "Reference",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "ScopedCss",
-      "AssetTraitValue": "ProjectBundle",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\L23Y16W03\\Downloads\\Sprint\\Git-FriendlyBlazor\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\GitFriendly.bundle.scp.css"
-    },
     {
       "Identity": "C:\\Users\\L23Y16W03\\Downloads\\Sprint\\Git-FriendlyBlazor\\wwwroot\\css\\app.css",
       "SourceId": "GitFriendly",

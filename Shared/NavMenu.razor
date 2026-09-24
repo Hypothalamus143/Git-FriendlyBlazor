@@ -1,36 +1,38 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="">GitFriendly</a>
-        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
-            <span class="navbar-toggler-icon"></span>
+﻿<div class="w-full md:w-64 bg-zinc-900 border-b md:border-b-0 md:border-r border-zinc-800 shrink-0">
+    <!-- Header / Logo -->
+    <div class="h-16 px-6 flex items-center justify-between border-b border-zinc-800/80">
+        <a class="text-base font-bold tracking-tight text-white flex items-center gap-2" href="">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+            Git-Friendly
+        </a>
+        <button title="Toggle navigation" 
+                class="p-2 text-zinc-400 hover:text-white hover:bg-zinc-800 rounded-lg transition-colors md:hidden" 
+                @onclick="ToggleNavMenu">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
         </button>
     </div>
-</div>
 
-<div class="@NavMenuCssClass nav-scrollable" @onclick="ToggleNavMenu">
-    <nav class="flex-column">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> Home
+    <!-- Navigation Links Container -->
+    <div class="@NavMenuCssClass md:block" @onclick="ToggleNavMenu">
+        <nav class="p-3 space-y-1">
+            <NavLink class="flex items-center gap-3 px-3.5 py-2.5 text-sm font-medium text-zinc-400 rounded-lg hover:text-white hover:bg-zinc-800/70 transition-all [&.active]:bg-zinc-800 [&.active]:text-white [&.active]:font-semibold" 
+                     href="" 
+                     Match="NavLinkMatch.All">
+                <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                </svg>
+                <span>Home</span>
             </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="counter">
-                <span class="oi oi-plus" aria-hidden="true"></span> Counter
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="fetchdata">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
-            </NavLink>
-        </div>
-    </nav>
+        </nav>
+    </div>
 </div>
 
 @code {
     private bool collapseNavMenu = true;
 
-    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+    private string? NavMenuCssClass => collapseNavMenu ? "hidden" : null;
 
     private void ToggleNavMenu()
     {
