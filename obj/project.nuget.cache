@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "U0D+ePjUymI=",
+  "dgSpecHash": "xNTj/hIjmM8=",
   "success": true,
-  "projectFilePath": "C:\\Users\\L23Y16W03\\Downloads\\Sprint\\Git-FriendlyBlazor\\GitFriendly.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "/home/john/Documents/vibecode/AppDev/Git-FriendlyBlazor/GitFriendly.csproj",
+  "expectedPackageFiles": [
+    "/home/john/.nuget/packages/microsoft.aspnetcore.app.internal.assets/10.0.12/microsoft.aspnetcore.app.internal.assets.10.0.12.nupkg.sha512"
+  ],
   "logs": []
 }

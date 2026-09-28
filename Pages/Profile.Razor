@@ -1,0 +1,305 @@
+@page "/profile"
+@using System.ComponentModel.DataAnnotations
+@inject NavigationManager Nav
+
+<PageTitle>Profile - Hypothalamus143 - GitFriendly</PageTitle>
+
+<!-- .app-viewport wrapper -->
+<div class="bg-[#000000] min-h-screen flex items-center justify-center p-6 md:p-8 font-sans antialiased text-white">
+
+    <!-- .dashboard-container card frame -->
+    <div class="bg-[#1b1b1e] border border-[#2a2a2d] rounded-[20px] w-full max-w-[900px] min-h-[520px] relative shadow-[0_20px_40px_rgba(0,0,0,0.8)] box-border p-6 flex flex-col gap-6">
+
+        <!-- Top Profile Banner -->
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pb-6 border-b border-[#2a2a2d]">
+            <div class="flex items-center gap-4 w-full sm:w-auto">
+                <!-- Avatar Placeholder -->
+                <div class="w-16 h-16 rounded-full bg-[#121214] border border-[#2a2a2d] flex items-center justify-center text-xl font-extrabold text-white shrink-0 shadow-inner">
+                    H1
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold text-white leading-tight">@userProfile.Name</h1>
+                    <p class="text-xs font-semibold text-[#8e8e93]">@@@userProfile.Username • @userProfile.Role</p>
+                    <p class="text-xs text-[#8e8e93] mt-1 leading-relaxed">@userProfile.Bio</p>
+                </div>
+            </div>
+
+            <!-- Stats Overview -->
+            <div class="flex items-center gap-3 shrink-0">
+                <div class="bg-[#121214] border border-[#2a2a2d] rounded-2xl px-4 py-2 flex flex-col items-center">
+                    <span class="text-sm font-extrabold text-white">@suggestions.Count</span>
+                    <span class="text-[0.65rem] font-semibold text-[#8e8e93] uppercase tracking-wider">Suggestions</span>
+                </div>
+                <div class="bg-[#121214] border border-[#2a2a2d] rounded-2xl px-4 py-2 flex flex-col items-center">
+                    <span class="text-sm font-extrabold text-emerald-400">@TotalAccepted</span>
+                    <span class="text-[0.65rem] font-semibold text-[#8e8e93] uppercase tracking-wider">Accepted</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section Title & Filter Tabs -->
+        <div class="flex items-center justify-between gap-2">
+            <h2 class="text-sm font-bold text-white uppercase tracking-wider">Contribution & PR Archive</h2>
+            <div class="flex items-center gap-1 bg-[#121214] border border-[#2a2a2d] p-1 rounded-xl">
+                <button class="px-2.5 py-1 text-xs font-semibold rounded-lg transition-all @(activeFilter == "All" ? "bg-[#2a2a2d] text-white" : "text-[#8e8e93] hover:text-white")"
+                        @onclick='() => activeFilter = "All"'>
+                    All (@suggestions.Count)
+                </button>
+                <button class="px-2.5 py-1 text-xs font-semibold rounded-lg transition-all @(activeFilter == "Accepted" ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/30" : "text-[#8e8e93] hover:text-white")"
+                        @onclick='() => activeFilter = "Accepted"'>
+                    Accepted
+                </button>
+                <button class="px-2.5 py-1 text-xs font-semibold rounded-lg transition-all @(activeFilter == "Pending" ? "bg-amber-500/20 text-amber-400 border border-amber-500/30" : "text-[#8e8e93] hover:text-white")"
+                        @onclick='() => activeFilter = "Pending"'>
+                    Pending
+                </button>
+                <button class="px-2.5 py-1 text-xs font-semibold rounded-lg transition-all @(activeFilter == "Rejected" ? "bg-red-500/20 text-red-400 border border-red-500/30" : "text-[#8e8e93] hover:text-white")"
+                        @onclick='() => activeFilter = "Rejected"'>
+                    Rejected
+                </button>
+            </div>
+        </div>
+
+        <!-- Suggestions List Container -->
+        <div class="space-y-4 max-h-[440px] overflow-y-auto pr-1">
+            @foreach (var item in FilteredSuggestions)
+            {
+                <div class="bg-[#0d0d0f] border border-[#2a2a2d] rounded-2xl p-4 flex flex-col gap-3 transition-colors hover:border-[#3a3a3d]">
+                    
+                    <!-- Item Header -->
+                    <div class="flex items-start justify-between gap-3">
+                        <div class="space-y-1">
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs font-bold text-white bg-[#121214] border border-[#2a2a2d] px-2.5 py-0.5 rounded-md font-mono">
+                                    📁 @item.Repository
+                                </span>
+                                @GetStatusBadge(item.Status)
+                            </div>
+                            <h3 class="text-sm font-bold text-white leading-snug">@item.Title</h3>
+                        </div>
+                        <span class="text-[0.65rem] text-[#8e8e93] shrink-0">@item.SubmittedDate.ToString("MMM dd, yyyy")</span>
+                    </div>
+
+                    <!-- Description Body -->
+                    <p class="text-xs text-[#8e8e93] leading-relaxed bg-[#121214] p-3 rounded-xl border border-[#2a2a2d]/50 font-mono">
+                        @item.Description
+                    </p>
+
+                    <!-- Interaction Bar: Upvotes/Downvotes + Toggle Comments -->
+                    <div class="flex items-center justify-between pt-1 border-t border-[#2a2a2d]">
+                        <div class="flex items-center gap-2">
+                            <!-- Upvote Button -->
+                            <button class="flex items-center gap-1.5 px-3 py-1 bg-[#121214] border border-[#2a2a2d] hover:border-emerald-500/50 hover:text-emerald-400 rounded-full text-xs font-bold text-white transition-all cursor-pointer @(item.UserVote == VoteType.Upvote ? "bg-emerald-500/10 border-emerald-500 text-emerald-400" : "")"
+                                    @onclick="() => Vote(item, VoteType.Upvote)">
+                                <span>▲</span>
+                                <span>@item.Upvotes</span>
+                            </button>
+
+                            <!-- Downvote Button -->
+                            <button class="flex items-center gap-1.5 px-3 py-1 bg-[#121214] border border-[#2a2a2d] hover:border-red-500/50 hover:text-red-400 rounded-full text-xs font-bold text-white transition-all cursor-pointer @(item.UserVote == VoteType.Downvote ? "bg-red-500/10 border-red-500 text-red-400" : "")"
+                                    @onclick="() => Vote(item, VoteType.Downvote)">
+                                <span>▼</span>
+                                <span>@item.Downvotes</span>
+                            </button>
+                        </div>
+
+                        <!-- Comments Toggle Button -->
+                        <button class="text-xs font-semibold text-[#8e8e93] hover:text-white flex items-center gap-1 cursor-pointer"
+                                @onclick="() => item.ShowComments = !item.ShowComments">
+                            <span>💬 @item.Comments.Count @(item.Comments.Count == 1 ? "Comment" : "Comments")</span>
+                            <span>@(item.ShowComments ? "▲" : "▼")</span>
+                        </button>
+                    </div>
+
+                    <!-- Collapsible Comments Section -->
+                    @if (item.ShowComments)
+                    {
+                        <div class="pt-2 space-y-3 border-t border-[#2a2a2d]/60">
+                            <!-- Add Comment Input -->
+                            <div class="flex gap-2">
+                                <input type="text" 
+                                       class="flex-grow bg-[#121214] border-[1.5px] border-[#2a2a2d] rounded-full px-4 py-1.5 text-xs text-white placeholder-[#8e8e93] outline-none focus:border-[#55555c]"
+                                       placeholder="Add a comment to this suggestion..."
+                                       @bind="item.NewCommentText" 
+                                       @onkeyup='(e) => { if (e.Key == "Enter") AddComment(item); }' />
+                                <button class="bg-white text-black text-xs font-bold px-4 py-1.5 rounded-full hover:opacity-90 transition-opacity shrink-0 cursor-pointer"
+                                        @onclick="() => AddComment(item)">
+                                    Post
+                                </button>
+                            </div>
+
+                            <!-- Comments Thread -->
+                            @if (item.Comments.Count > 0)
+                            {
+                                <div class="space-y-2">
+                                    @foreach (var comment in item.Comments)
+                                    {
+                                        <div class="bg-[#121214] border border-[#2a2a2d] p-2.5 rounded-xl text-xs flex flex-col gap-1">
+                                            <div class="flex items-center justify-between">
+                                                <span class="font-bold text-white">@comment.Author</span>
+                                                <span class="text-[0.6rem] text-[#8e8e93]">@comment.Timestamp.ToString("MMM dd • h:mm tt")</span>
+                                            </div>
+                                            <p class="text-[#8e8e93]">@comment.Text</p>
+                                        </div>
+                                    }
+                                </div>
+                            }
+                        </div>
+                    }
+
+                </div>
+            }
+        </div>
+
+    </div>
+</div>
+
+@code {
+    private ProfileModel userProfile = new()
+    {
+        Name = "Hypothalamus143",
+        Username = "hypothalamus143",
+        Role = "Core Contributor",
+        Bio = "Architecting modular state management and dark-mode design systems across GitFriendly repos."
+    };
+
+    private string activeFilter = "All";
+    private List<SuggestionItem> suggestions = new();
+
+    private int TotalAccepted => suggestions.Count(s => s.Status == SuggestionStatus.Accepted);
+
+    private IEnumerable<SuggestionItem> FilteredSuggestions => activeFilter switch
+    {
+        "Accepted" => suggestions.Where(s => s.Status == SuggestionStatus.Accepted),
+        "Pending" => suggestions.Where(s => s.Status == SuggestionStatus.Pending),
+        "Rejected" => suggestions.Where(s => s.Status == SuggestionStatus.Rejected),
+        _ => suggestions
+    };
+
+    protected override void OnInitialized()
+    {
+        // Hardcoded Pull Request / Suggestion Archive for Hypothalamus143
+        suggestions = new List<SuggestionItem>
+        {
+            new SuggestionItem
+            {
+                Repository = "gitfriendly/core-ui",
+                Title = "PR #104: Standardize zinc-based dark theme token palette and border radii",
+                Description = "Replaced legacy Bootstrap utility classes with a tailwind v4 hex palette (#000000, #1b1b1e, #121214). Cleaned up _Host.cshtml and scoped CSS bundles.",
+                Status = SuggestionStatus.Accepted,
+                Upvotes = 18,
+                Downvotes = 1,
+                SubmittedDate = DateTime.Now.AddDays(-3),
+                Comments = new List<CommentItem>
+                {
+                    new CommentItem { Author = "alex_dev", Text = "Clean conversion! The contrast ratio on dark inputs is much sharper now.", Timestamp = DateTime.Now.AddDays(-2) },
+                    new CommentItem { Author = "sarah_m", Text = "Merged into main without conflicts.", Timestamp = DateTime.Now.AddDays(-1) }
+                }
+            },
+            new SuggestionItem
+            {
+                Repository = "gitfriendly/api-gateway",
+                Title = "PR #88: Add rate-limiting middleware for auth endpoints",
+                Description = "Introduced token-bucket algorithm to prevent automated brute-force attempts on /api/v1/auth/login.",
+                Status = SuggestionStatus.Pending,
+                Upvotes = 9,
+                Downvotes = 0,
+                SubmittedDate = DateTime.Now.AddDays(-1),
+                Comments = new List<CommentItem>
+                {
+                    new CommentItem { Author = "security_bot", Text = "Automated static analysis passed with 0 vulnerabilities.", Timestamp = DateTime.Now.AddHours(-12) }
+                }
+            },
+            new SuggestionItem
+            {
+                Repository = "gitfriendly/cli-tools",
+                Title = "PR #42: Deprecate custom shell scripts in favor of native C# CLI command executor",
+                Description = "Proposed removing legacy bash helper scripts in favor of System.CommandLine wrapper binaries.",
+                Status = SuggestionStatus.Rejected,
+                Upvotes = 3,
+                Downvotes = 7,
+                SubmittedDate = DateTime.Now.AddDays(-12),
+                Comments = new List<CommentItem>
+                {
+                    new CommentItem { Author = "lead_arch", Text = "Closing for now as bash scripts are required for low-footprint CI runner environments.", Timestamp = DateTime.Now.AddDays(-10) }
+                }
+            }
+        };
+    }
+
+    private void Vote(SuggestionItem item, VoteType vote)
+    {
+        if (item.UserVote == vote)
+        {
+            // Retract vote
+            if (vote == VoteType.Upvote) item.Upvotes--;
+            else item.Downvotes--;
+            item.UserVote = VoteType.None;
+        }
+        else
+        {
+            // Switch or add vote
+            if (item.UserVote == VoteType.Upvote) item.Upvotes--;
+            if (item.UserVote == VoteType.Downvote) item.Downvotes--;
+
+            if (vote == VoteType.Upvote) item.Upvotes++;
+            else item.Downvotes++;
+            item.UserVote = vote;
+        }
+    }
+
+    private void AddComment(SuggestionItem item)
+    {
+        if (string.IsNullOrWhiteSpace(item.NewCommentText)) return;
+
+        item.Comments.Add(new CommentItem
+        {
+            Author = "Hypothalamus143",
+            Text = item.NewCommentText.Trim(),
+            Timestamp = DateTime.Now
+        });
+
+        item.NewCommentText = string.Empty;
+    }
+
+    private RenderFragment GetStatusBadge(SuggestionStatus status) => status switch
+    {
+        SuggestionStatus.Accepted => @<span class="text-[0.65rem] font-extrabold px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400">Accepted</span>,
+        SuggestionStatus.Pending => @<span class="text-[0.65rem] font-extrabold px-2 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400">Pending</span>,
+        SuggestionStatus.Rejected => @<span class="text-[0.65rem] font-extrabold px-2 py-0.5 rounded-full bg-red-500/10 border border-red-500/30 text-red-400">Rejected</span>,
+        _ => @<span></span>
+    };
+
+    public enum SuggestionStatus { Accepted, Pending, Rejected }
+    public enum VoteType { None, Upvote, Downvote }
+
+    public class ProfileModel
+    {
+        public string Name { get; set; } = string.Empty;
+        public string Username { get; set; } = string.Empty;
+        public string Role { get; set; } = string.Empty;
+        public string Bio { get; set; } = string.Empty;
+    }
+
+    public class SuggestionItem
+    {
+        public string Repository { get; set; } = string.Empty;
+        public string Title { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
+        public SuggestionStatus Status { get; set; }
+        public int Upvotes { get; set; }
+        public int Downvotes { get; set; }
+        public DateTime SubmittedDate { get; set; }
+        public VoteType UserVote { get; set; } = VoteType.None;
+        public bool ShowComments { get; set; } = false;
+        public string NewCommentText { get; set; } = string.Empty;
+        public List<CommentItem> Comments { get; set; } = new();
+    }
+
+    public class CommentItem
+    {
+        public string Author { get; set; } = string.Empty;
+        public string Text { get; set; } = string.Empty;
+        public DateTime Timestamp { get; set; }
+    }
+}
