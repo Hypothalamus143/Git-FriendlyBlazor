@@ -1,0 +1,67 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = GitFriendly
+build_property.RootNamespace = GitFriendly
+build_property.ProjectDir = /home/baynesberny/Repositories/Git-FriendlyBlazor_BlanzaReview/
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = /home/baynesberny/Repositories/Git-FriendlyBlazor_BlanzaReview
+build_property._RazorSourceGeneratorDebug = 
+
+[/home/baynesberny/Repositories/Git-FriendlyBlazor_BlanzaReview/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/baynesberny/Repositories/Git-FriendlyBlazor_BlanzaReview/Layout/AuthLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0L0F1dGhMYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/baynesberny/Repositories/Git-FriendlyBlazor_BlanzaReview/Layout/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0L01haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/baynesberny/Repositories/Git-FriendlyBlazor_BlanzaReview/Pages/Dashboard.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRGFzaGJvYXJkLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/baynesberny/Repositories/Git-FriendlyBlazor_BlanzaReview/Pages/Login.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTG9naW4ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/baynesberny/Repositories/Git-FriendlyBlazor_BlanzaReview/Pages/Register.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUmVnaXN0ZXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/baynesberny/Repositories/Git-FriendlyBlazor_BlanzaReview/Shared/BrandLogo.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL0JyYW5kTG9nby5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/baynesberny/Repositories/Git-FriendlyBlazor_BlanzaReview/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL01haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/baynesberny/Repositories/Git-FriendlyBlazor_BlanzaReview/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL05hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/baynesberny/Repositories/Git-FriendlyBlazor_BlanzaReview/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/baynesberny/Repositories/Git-FriendlyBlazor_BlanzaReview/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/baynesberny/Repositories/Git-FriendlyBlazor_BlanzaReview/Pages/_Host.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvX0hvc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 

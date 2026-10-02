@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "U0D+ePjUymI=",
+  "dgSpecHash": "2AxdZb/ucUQQIPLsbTNY5IE/2rFaVPLquHvdSux+UG2mGYD+N4tcPTdEssy0oepAzWxC8ZB6JY+bkHaaUUpQjQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\L23Y16W03\\Downloads\\Sprint\\Git-FriendlyBlazor\\GitFriendly.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "/home/baynesberny/Repositories/Git-FriendlyBlazor_BlanzaReview/GitFriendly.csproj",
+  "expectedPackageFiles": [
+    "/home/baynesberny/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.31/microsoft.aspnetcore.app.ref.8.0.31.nupkg.sha512"
+  ],
   "logs": []
 }
