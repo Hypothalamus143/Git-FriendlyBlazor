@@ -1,0 +1,10 @@
+## Project Structure | Rating: 5/5 ⭐
+
+First of all, the structure is very clean and organized. And from what I have noticed is that its not the default layout given by blazor and well, not its not a bad thing and actually its much more cleaner than the default one which is actually good. Naming wise, its good as well, following the proper format. Commit history and naming is very well clean, having a proper identification for the commit messages really eases what the commit is all about. Lastly code wise, I have nothing to say, it is well and is consistent on all files, well each one of us does have our own way of organizing our code, but seeing it being consistent doesnt take much time to understand the whole structure once you know some of it. Overall, its very good and well.
+
+
+---
+
+## Front-End & UI Design | Rating: 4.8/5 ⭐
+
+Layout and Visual is modern and minimalistically good, there's not much content to view and dividing the attention of the eyes which is a plus. Moreover, the ui is easy to understand, easy to navigate and follow without having much worries. The dynamic UI is also a huge plus, having it adjust and still have a good visual to give to the user is really well. However, I have noticed once I have minimized the window to a small size, the ui overflows and doesn't dynamically adjust anymore which is not that much, or it's probably from my device so I won't delve much into it. Moving over, the design wise and ui is very consistent, not having to adjust to another style is one good of a point to have, since I have been through those kinds of sites before and was horribly unwell about it. And two more thing, I noticed that some of your buttons are still not functioning (well we are still on the development part so not that much of a problem), and I dont see the feedback page as well. Aside from those, I dont have any other issues, and for now, I can't particularly notice any responsiveness issue since this is still local and no calls and traffic to do so yea. Overall, this is a very well made front-end
