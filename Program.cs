@@ -1,12 +1,20 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
-
+using GitFriendly.Services;
+using GitFriendly.Shared;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 
+var url = builder.Configuration["Supabase:Url"]!;
+var key = builder.Configuration["Supabase:Key"]!;
+var supabase = new Supabase.Client(url, key,
+    new Supabase.SupabaseOptions { AutoConnectRealtime = false });
+await supabase.InitializeAsync();
+builder.Services.AddSingleton(supabase);
+builder.Services.AddScoped<SessionState>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

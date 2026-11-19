@@ -1,9 +1,13 @@
 @page "/dashboard"
 @using GitFriendly.Shared
+@using GitFriendly.Models
+@using GitFriendly.Services
+@inject SessionState session
 @inject NavigationManager Nav
 
 <PageTitle>Dashboard - GitFriendly</PageTitle>
 
+<p>Hello @session.currentUser.Username</p>
 <!-- .app-viewport -->
 <div class="bg-[#000000] min-h-screen flex items-center justify-center p-8 font-sans antialiased text-white">
     

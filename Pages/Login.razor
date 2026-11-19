@@ -2,7 +2,11 @@
 @page "/"
 @using GitFriendly.Models
 @using GitFriendly.Shared
+@using GitFriendly.Services
 @inject NavigationManager Nav
+@inject Supabase.Client Db
+@inject SessionState session
+@using static Supabase.Postgrest.Constants
 <head>
     <link rel="stylesheet" href="css/app.css" />
 </head>
@@ -28,13 +32,32 @@
 
         <a class="auth-footer-link" @onclick='() => Nav.NavigateTo("/register")'>Create Account</a>
     </div>
+    <p>@message</p>
 </div>
 
 @code {
     private UserLoginModel loginModel = new();
+    string message = "";
+    List<User> users = new();
 
-    private void HandleLogin()
+    async Task GetUsers(string username, string password)
+  {
+    var res = await Db.From<User>()
+        .Where(u => u.Username==username && u.Password==password)
+        .Get();
+    users = res.Models;
+  }
+    
+    
+    async private void HandleLogin()
     {
+    await GetUsers(loginModel.Username, loginModel.Password);
+
+    if(users.Count > 0){
+        session.currentUser = users.First();
         Nav.NavigateTo("/dashboard");
     }
+    else message = "Invalid Username or Password";
+    }
+
 }

@@ -2,6 +2,8 @@
 @using GitFriendly.Models
 @using GitFriendly.Shared
 @inject NavigationManager Nav
+@inject Supabase.Client Db
+@using static Supabase.Postgrest.Constants
 <head>
     <link rel="stylesheet" href="css/app.css" />
 </head>
@@ -25,18 +27,49 @@
             <InputText class="custom-input" type="password" placeholder="Confirm Password" @bind-Value="registerModel.ConfirmPassword" />
             <ValidationMessage For="@(() => registerModel.ConfirmPassword)" class="text-danger mb-2" />
 
-            <button type="submit" class="btn-submit">Create Account</button>
+            <button type="submit" disabled="@saving" class="btn-submit">Create Account</button>
         </EditForm>
 
         <a class="auth-footer-link" @onclick='() => Nav.NavigateTo("/login")'>Login</a>
     </div>
+    <p>@message</p>
 </div>
 
 @code {
     private UserRegisterModel registerModel = new();
+    string message = "";
+    bool saving = false;
+    List<User> users = new();
 
-    private void HandleRegistration()
+    async Task GetUsers(string username)
+  {
+    var res = await Db.From<User>()
+        .Where(u => u.Username==username)
+        .Get();
+    users = res.Models;
+  }
+    
+    async Task RegisterUser(string username, string password){
+        if(string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password)){
+            message = "username or password cannot be empty";
+            return;
+        }
+        saving = true;
+        await Db.From<User>().Insert(new User
+          {
+            Username = username,
+            Password = password
+          });
+        saving = false;
+    }
+    async private void HandleRegistration()
     {
-        Nav.NavigateTo("/dashboard");
+    await GetUsers(registerModel.Username);
+        if(users.Count > 0) message = "Invalid Username or Password";
+        else if(registerModel.Password != registerModel.ConfirmPassword) message = "Passwords don't match";
+        else{
+            await RegisterUser(registerModel.Username, registerModel.Password);
+            Nav.NavigateTo("/login");
+        }
     }
 }

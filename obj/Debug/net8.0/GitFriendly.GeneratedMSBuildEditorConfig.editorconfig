@@ -46,6 +46,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVnaXN0ZXIucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/L23Y16W03/Downloads/Sprint/Git-FriendlyBlazor/Pages/Users.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXNlcnMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/L23Y16W03/Downloads/Sprint/Git-FriendlyBlazor/Shared/BrandLogo.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXEJyYW5kTG9nby5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 

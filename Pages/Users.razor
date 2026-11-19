@@ -1,0 +1,29 @@
+@page "/users"
+@inject Supabase.Client Db
+@using static Supabase.Postgrest.Constants
+@using GitFriendly.Models
+
+<ul class="space-y-2">
+  @foreach (var u in users)
+  {
+    <li class="rounded border p-3">
+      @u.Id · @u.Username · @u.Password
+    </li>
+  }
+</ul>
+
+@code {
+  List<User> users = new();
+
+  protected override async Task OnInitializedAsync()
+      => await Load();
+
+  async Task Load()
+  {
+    var res = await Db.From<User>()
+        .Order(u => u.Id, Ordering.Ascending)
+        .Range(0, 49)                      // first 50
+        .Get();                            // sends GET
+    users = res.Models;
+  }
+}
